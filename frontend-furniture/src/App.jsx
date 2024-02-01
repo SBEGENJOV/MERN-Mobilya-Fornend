@@ -1,12 +1,7 @@
-import './App.css'
+import "./App.css";
 
 function App() {
-
-  return (
-    <>
-     deneme
-    </>
-  )
+  return <>deneme</>;
 }
 
-export default App
+export default App;
