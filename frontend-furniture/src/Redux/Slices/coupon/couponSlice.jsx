@@ -119,7 +119,7 @@ export const updateCouponAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `${BASE_URL}/coupon/${payload?.productId}`,
+        `${BASE_URL}/coupon/${payload?.couponId}`,
         formData,
         config
       );
@@ -180,7 +180,7 @@ const couponSlice = createSlice({
       state.loading = false;
     });
 
-    //! get single post
+    //! get single kupon
     builder.addCase(getCouponAction.pending, (state, action) => {
       state.loading = true;
     });
@@ -194,7 +194,7 @@ const couponSlice = createSlice({
       state.loading = false;
     });
 
-    //! detelet post
+    //! detelet kupon
     builder.addCase(deleteCouponAction.pending, (state, action) => {
       state.loading = true;
     });
