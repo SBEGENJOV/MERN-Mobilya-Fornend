@@ -4,6 +4,7 @@ import productsReducer from "../Slices/product/productsSlice";
 import couponReducer from "../Slices/coupon/couponSlice";
 import productTypeReducer from "../Slices/product type/productTypeSlice";
 import contactReducer from "../Slices/contact/contactSlice";
+import commentReducer from "../Slices/comments/commentsSlice";
 
 //! Store
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     coupon: couponReducer,
     productTypes: productTypeReducer,
     contacts: contactReducer,
+    comments: commentReducer,
   },
 });
 

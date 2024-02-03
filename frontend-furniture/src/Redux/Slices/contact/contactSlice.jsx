@@ -5,7 +5,6 @@ import {
   resetSuccesAction,
 } from "../globalSlice/globalSlice";
 import BASE_URL from "../../../utils/baseURL";
-import { updateCouponAction } from "../coupon/couponSlice";
 
 const INITIAL_STATE = {
   loading: false,
