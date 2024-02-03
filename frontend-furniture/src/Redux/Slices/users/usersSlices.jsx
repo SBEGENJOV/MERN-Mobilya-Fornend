@@ -144,7 +144,6 @@ export const forgotPasswordAction = createAsyncThunk(
     }
   }
 );
-
 //! reset password Action
 export const passwordResetAction = createAsyncThunk(
   "users/password-reset",
@@ -165,7 +164,6 @@ export const passwordResetAction = createAsyncThunk(
     }
   }
 );
-
 //! update user profile Action
 export const updateUserProfileAction = createAsyncThunk(
   "users/update-user-profile",
@@ -214,6 +212,8 @@ export const productViewsCounttAction = createAsyncThunk(
   }
 );
 
+
+
 //! Users Slices
 const usersSlice = createSlice({
   name: "users",
@@ -233,7 +233,7 @@ const usersSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
       state.isLogin = false;
-    }); 
+    });
     //get user private profile
     builder.addCase(userPrivateProfileAction.pending, (state, action) => {
       state.loading = true;
@@ -263,7 +263,7 @@ const usersSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     });
-    
+
     //forgot password
     builder.addCase(forgotPasswordAction.pending, (state, action) => {
       state.loading = true;
@@ -294,17 +294,19 @@ const usersSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     });
-    
+
     //follow product
     builder.addCase(followProductAction.pending, (state, action) => {
       state.loading = true;
     });
     builder.addCase(followProductAction.fulfilled, (state, action) => {
-      state.profile = action.payload;
+      // isLiked alanını güncelle
+      state.isLiked = action.payload.isLiked;
       state.success = true;
       state.loading = false;
       state.error = null;
     });
+
     builder.addCase(followProductAction.rejected, (state, action) => {
       state.error = action.payload;
       state.loading = false;
@@ -314,7 +316,7 @@ const usersSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(unFollowProductAction.fulfilled, (state, action) => {
-      state.profile = action.payload;
+      state.isLiked = action.payload.isLiked;
       state.success = true;
       state.loading = false;
       state.error = null;
@@ -347,7 +349,7 @@ const usersSlice = createSlice({
     //! Reset success action
     builder.addCase(resetSuccesAction.fulfilled, (state) => {
       state.success = false;
-    });    
+    });
   },
 });
 
