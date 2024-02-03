@@ -11,8 +11,6 @@ const INITIAL_STATE = {
   error: null,
   coupons: [],
   coupon: null,
-  isDelete: false,
-  isUpdate: false,
   success: false,
 };
 
