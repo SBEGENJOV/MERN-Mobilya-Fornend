@@ -208,6 +208,6 @@ const categorySlice = createSlice({
 });
 
 //! generate reducer
-const couponReducer = couponSlice.reducer;
+const categoryReducer = categorySlice.reducer;
 
-export default couponReducer;
+export default categoryReducer;
