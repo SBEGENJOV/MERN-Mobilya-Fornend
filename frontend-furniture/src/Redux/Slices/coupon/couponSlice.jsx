@@ -65,20 +65,6 @@ export const getCouponAction = createAsyncThunk(
   }
 );
 
-//Kupon kullanma
-export const useCouponAction = createAsyncThunk(
-  "coupon/get-product",
-  async (couponId, { rejectWithValue, getState, dispatch }) => {
-    //make request
-    try {
-      const { data } = await axios.get(`${BASE_URL}/coupon/single/${couponId}`);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error?.response?.data);
-    }
-  }
-);
-
 //Kupon silme
 export const deleteCouponAction = createAsyncThunk(
   "coupon/delete-coupon",
@@ -123,6 +109,20 @@ export const updateCouponAction = createAsyncThunk(
         formData,
         config
       );
+      return data;
+    } catch (error) {
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+//Kupon kullanma
+export const useCouponAction = createAsyncThunk(
+  "coupon/get-product",
+  async (couponId, { rejectWithValue, getState, dispatch }) => {
+    //make request
+    try {
+      const { data } = await axios.get(`${BASE_URL}/coupon/single/${couponId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error?.response?.data);
