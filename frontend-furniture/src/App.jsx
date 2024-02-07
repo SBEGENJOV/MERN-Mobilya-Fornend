@@ -1,17 +1,13 @@
 import "./App.css";
+import GlobalNotfication from "./Component/globalNotfication";
+import Navbar from "./Component/navbar";
 
 function App() {
   return (
-    <header>
-      <div className="global-notification">
-        <div className="container">
-          <p>
-            Mobilya Denilince Aklına ilk geldiysek
-            <a href="shop.html"> Şimdi AL</a>
-          </p>
-        </div>
-      </div>
-    </header>
+    <div>
+      <GlobalNotfication />
+      <Navbar />
+    </div>
   );
 }
 
