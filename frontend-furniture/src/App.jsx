@@ -1,12 +1,12 @@
 import "./App.css";
-import GlobalNotfication from "./Component/globalNotfication";
-import Navbar from "./Component/navbar";
+import Header from "./Component/Header/Header";
+import GlobalNotfication from "./Component/Global/globalNotfication";
 
 function App() {
   return (
     <div>
       <GlobalNotfication />
-      <Navbar />
+      <Header />
     </div>
   );
 }
