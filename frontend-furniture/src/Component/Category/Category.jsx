@@ -20,8 +20,20 @@ export default function Category() {
                 <div className="menu-dropdown-megamenu">
                   <div className="megamenu-links">
                     <div className="megamenu-products">
-                      <h3 className="megamenu-products-title">Koltuk</h3>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"></img>
+                      <h3>Koltuk</h3>
+                      <img src="https://e-commerce-udemy.netlify.app/img/categories/categories1.png"></img>
+                    </div>
+                    <div className="megamenu-products">
+                      <h3>Deneme</h3>
+                      <img src="https://e-commerce-udemy.netlify.app/img/categories/categories2.png"></img>
+                    </div>
+                    <div className="megamenu-products">
+                      <h3>Deneme 2</h3>
+                      <img src="https://e-commerce-udemy.netlify.app/img/categories/categories4.png"></img>
+                    </div>
+                    <div className="megamenu-products">
+                      <h3>Deneme 3</h3>
+                      <img src="https://e-commerce-udemy.netlify.app/img/categories/categories5.png"></img>
                     </div>
                   </div>
                 </div>
