@@ -1,14 +1,12 @@
 import "./App.css";
 import Header from "./Component/Header/Header";
-import GlobalNotfication from "./Component/Global/globalNotfication";
-import Category from "./Component/Category/Category";
+import Sliders from "./Component/Slider/Slider";
 
 function App() {
   return (
     <div>
-      <GlobalNotfication />
       <Header />
-      <Category />
+      <Sliders />
     </div>
   );
 }

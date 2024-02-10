@@ -1,10 +1,12 @@
+import Category from "../Category/Category";
+import GlobalNotfication from "../Global/globalNotfication";
 import "./Header.css";
 import PropTypes from "prop-types";
-//import "./Header";
 
 export default function Header() {
   return (
     <header>
+      <GlobalNotfication />
       <div className="header-row">
         <div className="container">
           <div className="header-wrapper">
@@ -64,7 +66,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <Category />
     </header>
   );
 }
