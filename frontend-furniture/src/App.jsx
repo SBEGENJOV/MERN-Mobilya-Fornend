@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./Component/Header/Header";
+import Product from "./Component/Product/Product";
 import Sliders from "./Component/Slider/Slider";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Header />
       <Sliders />
+      <Product />
     </div>
   );
 }
