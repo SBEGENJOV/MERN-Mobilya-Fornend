@@ -21,7 +21,10 @@ export default function Category() {
         <nav className="navigation">
           <ul className="menu-list">
             {categories?.categories?.map((category) => (
-              <li className="menu-list-item megamenu-wrapper">
+              <li
+                key={category._id}
+                className="menu-list-item megamenu-wrapper"
+              >
                 <a href="shop.html" className="menu-link">
                   {category.name}
                   <i className="bi bi-chevron-down"></i>
@@ -30,7 +33,10 @@ export default function Category() {
                   <div className="menu-dropdown-megamenu">
                     <div className="megamenu-links">
                       {category?.productTypes?.map((productTypes) => (
-                        <div className="megamenu-products">
+                        <div
+                          key={productTypes._id}
+                          className="megamenu-products"
+                        >
                           <div style={{ textAlign: "center" }}>
                             {productTypes?.name}
                           </div>
