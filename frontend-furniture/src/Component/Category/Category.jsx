@@ -29,22 +29,22 @@ export default function Category() {
                 <div className="menu-dropdown-wrapper">
                   <div className="menu-dropdown-megamenu">
                     <div className="megamenu-links">
-                      <div className="megamenu-products">
-                        {category?.productTypes?.name}
-                        <img src={category?.productTypes?.img}></img>
-                      </div>
-                      <div className="megamenu-products">
-                        <h3>Deneme</h3>
-                        <img src="https://e-commerce-udemy.netlify.app/img/categories/categories2.png"></img>
-                      </div>
-                      <div className="megamenu-products">
-                        <h3>Deneme 2</h3>
-                        <img src="https://e-commerce-udemy.netlify.app/img/categories/categories4.png"></img>
-                      </div>
-                      <div className="megamenu-products">
-                        <h3>Deneme 3</h3>
-                        <img src="https://e-commerce-udemy.netlify.app/img/categories/categories5.png"></img>
-                      </div>
+                      {category?.productTypes?.map((productTypes) => (
+                        <div className="megamenu-products">
+                          <div style={{ textAlign: "center" }}>
+                            {productTypes?.name}
+                          </div>
+                          <br />
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img src={productTypes?.img} alt="Product Image" />
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
