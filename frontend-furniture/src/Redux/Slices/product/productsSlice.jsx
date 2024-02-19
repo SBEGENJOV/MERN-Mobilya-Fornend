@@ -144,7 +144,7 @@ const productSlice = createSlice({
     });
     //handle fulfilled state
     builder.addCase(productsViewAction.fulfilled, (state, action) => {
-      state.posts = action.payload;
+      state.products = action.payload;
       state.loading = false;
       state.error = null;
     });

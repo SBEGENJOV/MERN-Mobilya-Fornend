@@ -1,12 +1,18 @@
-import Category from "../Category/Category";
-import GlobalNotfication from "../Global/globalNotfication";
+import Category from "../../Category/Category";
 import "./Header.css";
 import PropTypes from "prop-types";
 
 export default function Header() {
   return (
     <header>
-      <GlobalNotfication />
+      <div className="global-notification">
+        <div className="container">
+          <p>
+            Mobilya Denilince Aklına ilk geldiysek
+            <a href="shop.html"> Şimdi AL</a>
+          </p>
+        </div>
+      </div>
       <div className="header-row">
         <div className="container">
           <div className="header-wrapper">
