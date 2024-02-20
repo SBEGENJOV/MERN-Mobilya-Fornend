@@ -7,13 +7,17 @@ import { campainViewAction } from "../../Redux/Slices/campains/campainsSlice";
 const Campaigns = () => {
   const dispatch = useDispatch();
   const { campains } = useSelector((state) => state?.campains);
-  console.log(campains);
   useEffect(() => {
     dispatch(campainViewAction());
   }, [dispatch]);
-  const firstThreeBlogs = campains.slice(-3);
+  const firstThreeBlogs = campains.slice(-2);
   return (
     <section className="campaigns">
+      <div className="section-title">
+        <br />
+        <h2>Kampanyalar</h2>
+        <p>Öne Çıkan Kampanyalar</p>
+      </div>
       <div className="container">
         <div className="campaigns-wrapper">
           {firstThreeBlogs.map((campaign) => (

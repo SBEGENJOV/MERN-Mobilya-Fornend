@@ -2,6 +2,7 @@ import React from "react";
 import Product from "../Component/Product/Product";
 import Sliders from "../Component/Slider/Slider";
 import Campaigns from "../Component/Campaigns/Campaigns";
+import Blogs from "../Component/Blog/Blog";
 
 const HomePage = () => {
   return (
@@ -9,6 +10,7 @@ const HomePage = () => {
       <Sliders />
       <Product />
       <Campaigns />
+      <Blogs />
     </React.Fragment>
   );
 };
