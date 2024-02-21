@@ -4,6 +4,7 @@ import Sliders from "../Component/Slider/Slider";
 import Campaigns from "../Component/Campaigns/Campaigns";
 import Blogs from "../Component/Blog/Blog";
 import Brands from "../Component/Brands/Brands";
+import CampaignSingle from "../Component/CampaignSingle/CampaignSingle";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Campaigns />
       <Blogs />
       <Brands />
+      <CampaignSingle />
     </React.Fragment>
   );
 };
