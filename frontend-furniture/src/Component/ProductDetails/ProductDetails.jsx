@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Gallery from "./Gallery/Gallery";
 import Info from "./Info/Info";
 import "./ProductDetails.css";
-//import Tabs from "./Tabs/Tabs";
+import Tabs from "./Tabs/Tabs";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -28,7 +28,8 @@ const ProductDetails = () => {
                <Info singleProduct={products} />
             </main>
           </div>
-          {/* <Tabs singleProduct={products} setSingleProduct={products} /> */}
+          {/* <Tabs singleProduct={products} setSingleProduct={products} />  */}
+          <Tabs singleProduct={products} /> 
         </div>
       </div>
     </section>

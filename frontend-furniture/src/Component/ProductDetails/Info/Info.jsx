@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import "./Info.css";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../../Redux/Slices/cart/cartSlice";
+import { message } from "antd";
 
 const Info = ({ singleProduct }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,19 @@ const Info = ({ singleProduct }) => {
     originalPrice - (originalPrice * discountPercentage) / 100;
 
   const quantityRef = useRef();
+
+  const handleClick = () => {
+    const currentURL = window.location.href;
+    navigator.clipboard
+      .writeText(currentURL)
+      .then(() => {
+        message.success("Link başarıyla kopyalandı.");
+      })
+      .catch((error) => {
+        message.success("Link kopyalanırken hata oluştu.");
+      });
+  };
+
   return (
     <div className="product-info">
       <h1 className="product-title">{singleProduct?.product?.name}</h1>
@@ -131,10 +145,13 @@ const Info = ({ singleProduct }) => {
               <i className="bi bi-heart"></i>
               <span> Favorilere Ekle</span>
             </a>
-            <a href="#">
+            <button
+              style={{ backgroundColor: "transparent" }}
+              onClick={handleClick}
+            >
               <i className="bi bi-share"></i>
               <span> Ürünü Paylaş</span>
-            </a>
+            </button>
           </div>
         </div>
       </form>

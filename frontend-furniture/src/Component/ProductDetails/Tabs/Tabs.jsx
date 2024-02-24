@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Reviews from "../../Reviews/Reviews";
+//import Reviews from "../../Reviews/Reviews";
 import "./Tabs.css";
 import PropTypes from "prop-types";
 
-const Tabs = ({ singleProduct, setSingleProduct }) => {
+const Tabs = ({ singleProduct }) => {
   const [activeTab, setActiveTab] = useState("desc");
 
   const handleTabClick = (e, tab) => {
@@ -29,7 +29,7 @@ const Tabs = ({ singleProduct, setSingleProduct }) => {
             className={`tab-button ${activeTab === "info" ? "active" : ""}`}
             onClick={(e) => handleTabClick(e, "info")}
           >
-           Ürün Hakkında
+            Ürün Hakkında
           </a>
         </li>
         <li>
@@ -63,35 +63,31 @@ const Tabs = ({ singleProduct, setSingleProduct }) => {
           <table>
             <tbody>
               <tr>
-                <th>Color</th>
+                <th>Stok Kod</th>
                 <td>
-                  <p>
-                    Apple Red, Bio Blue, Sweet Orange, Blue, Green, Pink, Black,
-                    White
-                  </p>
+                  <p>{singleProduct?.product?.stokCode}</p>
                 </td>
               </tr>
               <tr>
-                <th>Size</th>
+                <th>Stok Adet</th>
                 <td>
-                  <p>
-                    {singleProduct.sizes.map((item, index) => (
-                      <span key={index}>
-                        {item.toUpperCase()}
-                        {index < singleProduct.sizes.length - 1 && ", "}
-                      </span>
-                    ))}
-                  </p>
+                  <p>{singleProduct?.product?.stokCount}</p>
+                </td>
+              </tr>
+              <tr>
+                <th>Garanti Süresi</th>
+                <td>
+                  <p>{singleProduct?.product?.warranty} Ay</p>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <Reviews
+        {/* <Reviews
           active={activeTab === "reviews" ? "content active" : "content"}
           singleProduct={singleProduct}
           setSingleProduct={setSingleProduct}
-        />
+        /> */}
       </div>
     </div>
   );
