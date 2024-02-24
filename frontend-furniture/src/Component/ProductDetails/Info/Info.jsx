@@ -4,9 +4,12 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../Redux/Slices/cart/cartSlice";
 import { message } from "antd";
+import { useParams } from "react-router-dom";
+import { followProductAction } from "../../../Redux/Slices/users/usersSlices";
 
 const Info = ({ singleProduct }) => {
   const dispatch = useDispatch();
+  const { productId } = useParams();
 
   const filteredCard = JSON.parse(localStorage.getItem("furnitureItems")).find(
     (cartItem) => cartItem._id === singleProduct?.product?._id
@@ -21,7 +24,8 @@ const Info = ({ singleProduct }) => {
 
   const quantityRef = useRef();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     const currentURL = window.location.href;
     navigator.clipboard
       .writeText(currentURL)
@@ -31,6 +35,12 @@ const Info = ({ singleProduct }) => {
       .catch((error) => {
         message.success("Link kopyalanırken hata oluştu.");
       });
+  };
+
+  const likedProduct = (e) => {
+    e.preventDefault();
+    dispatch(followProductAction(productId));
+    message.success("Ürün Favorilere eklendi");
   };
 
   return (
@@ -141,10 +151,13 @@ const Info = ({ singleProduct }) => {
               <i className="bi bi-globe"></i>
               <span> Ulusal Ölçü</span>
             </a>
-            <a href="#">
+            <button
+              style={{ backgroundColor: "transparent" }}
+              onClick={likedProduct}
+            >
               <i className="bi bi-heart"></i>
               <span> Favorilere Ekle</span>
-            </a>
+            </button>
             <button
               style={{ backgroundColor: "transparent" }}
               onClick={handleClick}

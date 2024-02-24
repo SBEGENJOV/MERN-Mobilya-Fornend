@@ -41,7 +41,6 @@ PrevBtn.propTypes = {
   onClick: PropTypes.func,
 };
 const Gallery = ({ singleProduct }) => {
-  console.log(singleProduct);
   const [activeImg, setActiveImg] = useState({
     img: "",
     imgIndex: 0,

@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {
+  const originalPrice = productItem?.price?.current;
+  const discountPercentage = productItem?.price?.discount;
+
+  // İndirimli fiyatı hesaplama
+  const discountedPrice =
+    originalPrice - (originalPrice * discountPercentage) / 100;
   return (
     <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
@@ -33,10 +39,12 @@ const ProductItem = ({ productItem }) => {
           </li>
         </ul>
         <div className="product-prices">
-          <strong className="new-price">$50</strong>
-          <span className="old-price">$60</span>
+          <strong className="new-price">${discountedPrice}</strong>
+          <span className="old-price">${productItem?.price?.current}</span>
         </div>
-        <span className="product-discount">-23%</span>
+        <span className="product-discount">
+          -{productItem?.price?.discount}%
+        </span>
         <div className="product-links">
           <button className="add-to-cart">
             <i className="bi bi-basket-fill"></i>
