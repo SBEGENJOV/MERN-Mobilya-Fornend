@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
 import Category from "../../Category/Category";
 import "./Header.css";
 import PropTypes from "prop-types";
 
 export default function Header() {
+  const { cart } = useSelector((state) => state?.cart);
   return (
     <header>
       <div className="global-notification">
@@ -65,7 +67,9 @@ export default function Header() {
                 <div className="header-cart">
                   <a href="cart.html" className="header-cart-link">
                     <i className="bi bi-bag"></i>
-                    <span className="header-cart-count">0</span>
+                    <span className="header-cart-count">
+                      {cart.length}
+                    </span>
                   </a>
                 </div>
               </div>

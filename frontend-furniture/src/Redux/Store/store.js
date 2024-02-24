@@ -8,6 +8,7 @@ import commentReducer from "../Slices/comments/commentsSlice";
 import categoryReducer from "../Slices/categories/categoriesSlice";
 import campainsReducer from "../Slices/campains/campainsSlice";
 import blogReducer from "../Slices/blog/blogSlice";
+import cartReducer from "../Slices/cart/cartSlice";
 
 //! Store
 const store = configureStore({
@@ -21,6 +22,7 @@ const store = configureStore({
     category: categoryReducer,
     campains: campainsReducer,
     blog: blogReducer,
+    cart: cartReducer,
   },
 });
 

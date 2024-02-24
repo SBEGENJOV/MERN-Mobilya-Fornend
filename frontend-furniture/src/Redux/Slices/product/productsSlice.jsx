@@ -159,7 +159,7 @@ const productSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(addProductAction.fulfilled, (state, action) => {
-      state.post = action.payload;
+      state.products = action.payload;
       state.success = true;
       state.loading = false;
       state.error = null;
@@ -174,7 +174,7 @@ const productSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(updateProductAction.fulfilled, (state, action) => {
-      state.post = action.payload;
+      state.products = action.payload;
       state.success = true;
       state.loading = false;
       state.error = null;
@@ -189,7 +189,7 @@ const productSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getProductAction.fulfilled, (state, action) => {
-      state.post = action.payload;
+      state.products = action.payload;
       state.loading = false;
       state.error = null;
     });
