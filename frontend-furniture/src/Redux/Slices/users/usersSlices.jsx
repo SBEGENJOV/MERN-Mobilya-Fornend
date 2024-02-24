@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   isRegistered: false,
   isLogin: false,
   emailMessage: undefined,
-  profile: {},
+  profile: [],
   isLiked: [],
   isViewed: [],
   isEmailSent: false,
@@ -67,7 +67,7 @@ export const userPrivateProfileAction = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.get(`${BASE_URL}/users/profile/`, config);
+      const { data } = await axios.get(`${BASE_URL}/users/profile/${userId}`, config);
       return data;
     } catch (error) {
       return rejectWithValue(error?.response?.data);
@@ -212,8 +212,6 @@ export const productViewsCounttAction = createAsyncThunk(
   }
 );
 
-
-
 //! Users Slices
 const usersSlice = createSlice({
   name: "users",
@@ -234,10 +232,6 @@ const usersSlice = createSlice({
       state.loading = false;
       state.isLogin = false;
     });
-    //get user private profile
-    builder.addCase(userPrivateProfileAction.pending, (state, action) => {
-      state.loading = true;
-    });
     //Update user profile
     builder.addCase(updateUserProfileAction.pending, (state, action) => {
       state.loading = true;
@@ -252,6 +246,10 @@ const usersSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
       state.isUpdated = false;
+    });
+    //get user private profile
+    builder.addCase(userPrivateProfileAction.pending, (state, action) => {
+      state.loading = true;
     });
     builder.addCase(userPrivateProfileAction.fulfilled, (state, action) => {
       state.profile = action.payload;

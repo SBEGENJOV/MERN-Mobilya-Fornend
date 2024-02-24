@@ -1,9 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Category from "../../Category/Category";
 import "./Header.css";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { userPrivateProfileAction } from "../../../Redux/Slices/users/usersSlices";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const { userAuth, profile } = useSelector((state) => state?.users);
+  const userId = userAuth?.userInfo?._id;
+  useEffect(() => {
+    dispatch(userPrivateProfileAction(userId));
+  }, [dispatch, userId]);
   const { cart } = useSelector((state) => state?.cart);
   return (
     <header>
@@ -61,15 +69,18 @@ export default function Header() {
                 <button className="search-button">
                   <i className="bi bi-search"></i>
                 </button>
-                <a href="#">
-                  <i className="bi bi-heart"></i>
-                </a>
+                <div className="header-cart">
+                  <a href="cart.html" className="header-cart-link">
+                    <i className="bi bi-heart"></i>
+                    <span className="header-cart-count">
+                      {profile?.user?.productViewrs?.length}
+                    </span>
+                  </a>
+                </div>
                 <div className="header-cart">
                   <a href="cart.html" className="header-cart-link">
                     <i className="bi bi-bag"></i>
-                    <span className="header-cart-count">
-                      {cart.length}
-                    </span>
+                    <span className="header-cart-count">{cart.length}</span>
                   </a>
                 </div>
               </div>

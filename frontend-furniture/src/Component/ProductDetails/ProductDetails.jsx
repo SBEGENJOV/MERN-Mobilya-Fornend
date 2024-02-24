@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProductAction } from "../../Redux/Slices/product/productsSlice";
+import { productViewsCounttAction } from "../../Redux/Slices/users/usersSlices";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -15,7 +16,11 @@ const ProductDetails = () => {
   const { products } = useSelector((state) => state?.products);
   useEffect(() => {
     dispatch(getProductAction(productId));
+    dispatch(productViewsCounttAction(productId));
   }, [dispatch, productId]);
+  useEffect(() => {
+    dispatch(productViewsCounttAction(productId));
+  }, []);
 
   return (
     <section className="single-product">
