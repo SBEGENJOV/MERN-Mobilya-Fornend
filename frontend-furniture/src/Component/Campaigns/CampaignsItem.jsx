@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./CampaignsItem.css";
 import PropTypes from "prop-types";
 
@@ -15,9 +16,10 @@ const CampaignItem = ({ campainItem }) => {
     <div style={divStyle} className="campaign-item">
       <h3 className="campaign-title">{campainItem.title}</h3>
       <p className="campaign-desc">{descText}</p>
-      <a href="#" className="btn btn-primary">
-        Hepsini Gör
-        <i className="bi bi-arrow-right"></i>
+      <a className="btn btn-primary">
+        <div className="blog-info-bottom">
+          <Link to={`/campain/${campainItem._id}`}>Devamı İçin Tıkla</Link>
+        </div>
       </a>
     </div>
   );
