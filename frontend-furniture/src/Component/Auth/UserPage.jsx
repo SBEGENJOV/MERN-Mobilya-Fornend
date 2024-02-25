@@ -1,50 +1,26 @@
-import { useCallback, useEffect, useState } from "react";
 import "./userPage.css";
+import { useSelector } from "react-redux";
 
 const UserPage = () => {
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
-  const [dataSource, setDataSource] = useState({});
-  const user = localStorage.getItem("userInfo");
-  const deger = JSON.parse(user);
+  const { profile } = useSelector((state) => state?.users);
   const options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(dataSource.createdAt).toLocaleDateString(
+  const kayitDate = new Date(profile?.user?.createdAt).toLocaleDateString(
     "tr-TR",
     options
   );
-
-  const fetchUsers = useCallback(async () => {
-    const response = await fetch(`${apiUrl}/api/users/${deger.id}`);
-    if (response.ok) {
-      const data = await response.json();
-      setDataSource(data);
-    }
-  }, [apiUrl, deger.id]);
-
-  useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+  const sonGiris = new Date(profile?.user?.lastLogin).toLocaleDateString(
+    "tr-TR",
+    options
+  );
   return (
     <>
       <div className="userMain">
         <form className="userPageForm">
           <div className="input-group">
-            <label>Avatarınız:</label>
-            <br></br>
-            <img
-              src={dataSource.avatar}
-              style={{
-                marginLeft: "4.3rem",
-                width: "10rem",
-                height: "10rem",
-                borderRadius: "50%",
-              }}
-            ></img>
-          </div>
-          <div className="input-group">
             <label>Kullanıcı Adınız:</label>
             <input
               disabled
-              value={dataSource.username}
+              value={profile?.user?.username}
               type="text"
               name="name"
               id="name"
@@ -54,7 +30,7 @@ const UserPage = () => {
             <label>E-posta: </label>
             <input
               disabled
-              value={dataSource.email}
+              value={profile?.user?.email}
               type="email"
               name="email"
               id="email"
@@ -64,7 +40,27 @@ const UserPage = () => {
             <label>Kullanıcı Kayıt Tarihi: </label>
             <input
               disabled
-              value={formattedDate}
+              value={kayitDate}
+              type="text"
+              name="phone"
+              id="phone"
+            />
+          </div>
+          <div className="input-group">
+            <label>Kullanıcının Baktıgı Ürün Sayısı: </label>
+            <input
+              disabled
+              value={profile?.user?.productViewrs.length}
+              type="text"
+              name="phone"
+              id="phone"
+            />
+          </div>
+          <div className="input-group">
+            <label>Kullanıcının Begendigi Ürün Sayısı: </label>
+            <input
+              disabled
+              value={profile?.user?.likedProduct.length}
               type="text"
               name="phone"
               id="phone"

@@ -5,7 +5,7 @@ import BlogDetailsPage from "./Pages/BlogDetailsPage";
 import CampainDetailsPage from "./Pages/CampainDetailsPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage ";
 import AuthPage from "./Pages/AuthPage";
-
+import UserPage from "./Component/Auth/UserPage";
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +14,8 @@ function App() {
         <Route path="/blog/:blogId" element={<BlogDetailsPage />} />
         <Route path="/campain/:campainId" element={<CampainDetailsPage />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
-        <Route path="/user" element={<AuthPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
     </BrowserRouter>
   );

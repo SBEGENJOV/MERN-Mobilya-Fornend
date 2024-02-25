@@ -16,10 +16,8 @@ const CampaignItem = ({ campainItem }) => {
     <div style={divStyle} className="campaign-item">
       <h3 className="campaign-title">{campainItem.title}</h3>
       <p className="campaign-desc">{descText}</p>
-      <a className="btn btn-primary">
-        <div className="blog-info-bottom">
-          <Link to={`/campain/${campainItem._id}`}>Devamı İçin Tıkla</Link>
-        </div>
+      <a href={`/campain/${campainItem._id}`} className="btn btn-primary">
+        Devamı İçin Tıkla
       </a>
     </div>
   );

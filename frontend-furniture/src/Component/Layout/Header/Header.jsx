@@ -7,12 +7,14 @@ import { useEffect } from "react";
 import { userPrivateProfileAction } from "../../../Redux/Slices/users/usersSlices";
 
 export default function Header() {
+  const user = localStorage.getItem("userInfo");
   const dispatch = useDispatch();
   const { userAuth, profile } = useSelector((state) => state?.users);
   const userId = userAuth?.userInfo?._id;
-  useEffect(() => {
+  if (userAuth?.userInfo !== null) {
     dispatch(userPrivateProfileAction(userId));
-  }, [dispatch, userId]);
+  }
+
   const { cart } = useSelector((state) => state?.cart);
   return (
     <header>
@@ -39,7 +41,7 @@ export default function Header() {
               <nav className="navigation">
                 <ul className="menu-list">
                   <li className="menu-list-item">
-                    <a href="index.html" className="menu-link active">
+                    <a href="/" className="menu-link active">
                       Anasayfa
                     </a>
                   </li>
@@ -64,9 +66,15 @@ export default function Header() {
             </div>
             <div className="header-right">
               <div className="header-right-links">
-                <a href="account.html" className="header-account">
-                  <i className="bi bi-person"></i>
-                </a>
+                {user ? (
+                  <a href={"/user"} className="header-account">
+                    <i className="bi bi-person"></i>
+                  </a>
+                ) : (
+                  <a href={"/auth"} className="header-account">
+                    <i className="bi bi-person"></i>
+                  </a>
+                )}
                 <button className="search-button">
                   <i className="bi bi-search"></i>
                 </button>
@@ -74,7 +82,9 @@ export default function Header() {
                   <a href="cart.html" className="header-cart-link">
                     <i className="bi bi-heart"></i>
                     <span className="header-cart-count">
-                      {profile?.user?.likedProduct?.length}
+                      {userAuth?.userInfo === null
+                        ? 0
+                        : profile?.user?.likedProduct?.length}
                     </span>
                   </a>
                 </div>

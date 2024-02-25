@@ -27,13 +27,13 @@ const Sliders = () => {
     <section className="slider">
       <div className="slider-elements">
         {currentSlide === 0 && (
-          <SliderItem imageSrc="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <SliderItem imageSrc="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1992&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         )}
         {currentSlide === 1 && (
-          <SliderItem imageSrc="https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <SliderItem imageSrc="https://plus.unsplash.com/premium_photo-1678402545080-2353b489c0c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         )}
         {currentSlide === 2 && (
-          <SliderItem imageSrc="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=600" />
+          <SliderItem imageSrc="https://images.unsplash.com/photo-1503174971373-b1f69850bded?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         )}
       </div>
 

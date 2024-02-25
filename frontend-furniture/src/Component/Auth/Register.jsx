@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../../Redux/Slices/users/usersSlices";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ErrorMsg from "../Alert/ErrorMsg";
 import SuccesMsg from "../Alert/SuccesMsg";
 
 const Register = () => {
-  //store data
-  const { user, error, isRegistered, loading } = useSelector(
-    (state) => state?.users
-  );
+  const { user, error, loading } = useSelector((state) => state?.users);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -25,7 +23,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //!dispatch
     dispatch(
       registerAction({
         username: formData.username,
@@ -33,7 +30,6 @@ const Register = () => {
         email: formData?.email,
       })
     );
-    // reset form
     setFormData({
       email: "",
       password: "",
@@ -41,19 +37,18 @@ const Register = () => {
     });
   };
 
-  //! Redirect
   useEffect(() => {
     if (user?.status === "OK") {
-      Navigate("/login");
+      navigate("/");
     }
-  }, [user?.status]);
+  }, [user?.status, navigate]);
 
   return (
     <div className="account-column">
-      {/* Display error */}
       {error && <ErrorMsg message={error?.message} />}
-      {/* success message */}
-      {isRegistered && <SuccesMsg message="Kayıt işlemi Başarılı" />}
+      {user?.status === "registered" && (
+        <SuccesMsg message="Kayıt işlemi Başarılı" />
+      )}
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>

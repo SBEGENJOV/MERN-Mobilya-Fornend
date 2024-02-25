@@ -1,4 +1,3 @@
-import { message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "../../Redux/Slices/users/usersSlices";
@@ -8,8 +7,8 @@ import SuccesMsg from "../Alert/SuccesMsg";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    password: "12345",
-    username: "seyit",
+    username: "",
+    password: "",
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,7 +21,6 @@ const Login = () => {
   //handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    //!dispatch
     dispatch(
       loginAction({
         username: formData.username,
@@ -31,10 +29,11 @@ const Login = () => {
     );
     // reset form
     setFormData({
-      password: "",
       username: "",
+      password: "",
     });
   };
+
   //store data
   const { userAuth, loading, error, isLogin } = useSelector(
     (state) => state?.users
@@ -48,12 +47,9 @@ const Login = () => {
     }
   }, [navigate, error?.message]);
 
-  //! Redirect
+  // Redirect on successful login
   useEffect(() => {
-    if (
-      userAuth?.userInfo?.token &&
-      error?.message !== "Token expired/Invalid"
-    ) {
+    if (userAuth?.userInfo?.token) {
       navigate("/");
     }
   }, [navigate, userAuth?.userInfo?.token]);
@@ -62,8 +58,8 @@ const Login = () => {
     <div className="account-column">
       {/* Display error */}
       {error && <ErrorMsg message={error?.message} />}
-      {/* success message */}
-      {isLogin && <SuccesMsg message="Login Success" />}
+      {/* Display success message */}
+      {isLogin && <SuccesMsg message="Giriş başarılı" />}
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -71,7 +67,13 @@ const Login = () => {
             <span>
               Username <span className="required">*</span>
             </span>
-            <input type="text" name="email" required onChange={handleChange} />
+            <input
+              type="text"
+              name="username" // changed from 'email' to 'username'
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
           </label>
         </div>
         <div>
@@ -80,10 +82,12 @@ const Login = () => {
               Password <span className="required">*</span>
             </span>
             <input
-              required
-              name="password"
               type="password"
+              name="password"
+              value={formData.password}
               onChange={handleChange}
+              required
+              autoComplete="off" // disable autocomplete
             />
           </label>
         </div>

@@ -50,7 +50,7 @@ export const campainViewAction = createAsyncThunk(
   async (payload, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
-      const { data } = await axios.get(`${BASE_URL}/campain`);
+      const { data } = await axios.get(`${BASE_URL}/campain/`);
       return data;
     } catch (error) {
       return rejectWithValue(error?.response?.data);
