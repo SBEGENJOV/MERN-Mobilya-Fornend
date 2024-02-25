@@ -10,7 +10,8 @@ import BlogPage from "./Pages/BlogPage";
 import CampainPage from "./Pages/CampainPage";
 import ProductCategory from "./Component/Product/ProductCategory";
 import ContactPage from "./Pages/ContactPage";
-import Cart from "./Component/Cart/Cart";
+import Success from "./Pages/Success";
+import CartPage from "./Component/Cart/CartPage ";
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
         <Route path="/campain/:campainId" element={<CampainDetailsPage />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/success" element={<Success />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/campain" element={<CampainPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route
           path="/productCategory/:name/:productTypeId"
           element={<ProductCategory />}

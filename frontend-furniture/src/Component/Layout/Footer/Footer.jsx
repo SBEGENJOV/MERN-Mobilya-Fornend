@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Policy from "../Policy/Policy";
 import "./Footer.css";
+import { useDispatch, useSelector } from "react-redux";
+import { categoryViewAction } from "../../../Redux/Slices/categories/categoriesSlice";
 
 export default function Footer() {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state?.category);
+  //dispatch
+  console.log(categories);
+  useEffect(() => {
+    dispatch(categoryViewAction());
+  }, [dispatch]);
   return (
     <React.Fragment>
       <Policy />
@@ -99,6 +108,13 @@ export default function Footer() {
               </div>
               <div className="widget-nav-menu">
                 <h4>Kategori</h4>
+                <ul className="menu-list">
+                  {categories?.categories?.map((category) => (
+                    <li key={category._id}>
+                      <p>{category.name}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

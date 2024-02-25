@@ -3,16 +3,17 @@ import PropTypes from "prop-types";
 import { message } from "antd";
 import { addToCart } from "../../Redux/Slices/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { followProductAction } from "../../Redux/Slices/users/usersSlices";
 
 const ProductItem = ({ productItem }) => {
   const originalPrice = productItem?.price?.current;
   const discountPercentage = productItem?.price?.discount;
   const dispatch = useDispatch();
 
-  const filteredCard = [JSON.parse(localStorage.getItem("furnitureItems"))].find(
+  const filteredCard = JSON.parse(localStorage.getItem("furnitureItems")).find(
     (cartItem) => cartItem._id === productItem._id
   );
-
   // İndirimli fiyatı hesaplama
   const discountedPrice =
     originalPrice - (originalPrice * discountPercentage) / 100;
@@ -28,6 +29,24 @@ const ProductItem = ({ productItem }) => {
       .catch((error) => {
         message.success("Link kopyalanırken hata oluştu.");
       });
+  };
+
+  const handleSale = (e) => {
+    e.target.disabled = true;
+    dispatch(
+      addToCart({
+        ...productItem,
+        price: discountedPrice,
+        quantity: 1,
+      })
+    );
+  };
+
+  const likedProduct = (e) => {
+    e.preventDefault();
+    e.target.disabled = true;
+    dispatch(followProductAction(productItem._id));
+    message.success("Ürün Favorilere eklendi");
   };
   return (
     <div className="product-item glide__slide glide__slide--active">
@@ -68,20 +87,12 @@ const ProductItem = ({ productItem }) => {
         <div className="product-links">
           <button
             disabled={filteredCard}
-            onClick={() =>
-              dispatch(
-                addToCart({
-                  ...productItem,
-                  price: discountedPrice,
-                  quantity: 1,
-                })
-              )
-            }
+            onClick={handleSale}
             className="add-to-cart"
           >
             <i className="bi bi-basket-fill"></i>
           </button>
-          <button>
+          <button onClick={likedProduct}>
             <i className="bi bi-heart-fill"></i>
           </button>
 

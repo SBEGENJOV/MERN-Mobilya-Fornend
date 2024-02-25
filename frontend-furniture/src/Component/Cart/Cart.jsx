@@ -2,7 +2,7 @@ import "./Cart.css";
 //import CartCoupon from "./CartCoupon";
 //import CartProgress from "./CartProgress";
 import CartTable from "./CartTable";
-//import CartTotals from "./CartTotals";
+import CartTotals from "./CartTotals";
 
 const Cart = () => {
   const cartItems = JSON.parse(localStorage.getItem("furnitureItems"));
@@ -15,10 +15,10 @@ const Cart = () => {
               {/* <CartProgress /> */}
               <div className="shop-table-wrapper">
                 <CartTable />
-                {/* <CartCoupon /> */}
+                 {/* <CartCoupon />  */}
               </div>
             </form>
-            <div className="cart-collaterals">{/* <CartTotals /> */}</div>
+            <div className="cart-collaterals"><CartTotals /></div>
           </div>
         ) : (
           <h2>Sepetde Ürün Yok</h2>

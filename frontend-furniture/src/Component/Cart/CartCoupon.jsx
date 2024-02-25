@@ -1,24 +1,19 @@
 import { message } from "antd";
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartProvider";
+import {  useState } from "react";
+import { useDispatch } from "react-redux";
 
 const CartCoupon = () => {
   const [couponCode, setCouponCode] = useState("");
+  const dispatch = useDispatch();
 
-  const { cartItems, setCartItems } = useContext(CartContext);
-  const { couponDurum, setCouponDurum } = useContext(CartContext);
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const applyCoupon = async () => {
     if (couponCode.trim().length === 0) {
       return message.warning("Boş değer girilimez.");
     }
     try {
-      const res = await fetch(`${apiUrl}/api/coupons/code/${couponCode}`);
-
-      if (!res.ok) {
-        return message.warning("Girdiğiniz kupon kodu yanlış!");
-      }
+      
+      dispatch()
 
       const data = await res.json();
       const discountPercent = data.discountPercent;
@@ -56,9 +51,6 @@ const CartCoupon = () => {
           </button>
         )}
       </div>
-      {/* <div className="update-cart">
-        <button className="btn">Update Cart</button>
-      </div> */}
     </div>
   );
 };

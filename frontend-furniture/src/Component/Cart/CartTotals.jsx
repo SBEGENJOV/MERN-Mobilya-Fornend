@@ -1,24 +1,23 @@
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartProvider";
+import { useState } from "react";
 import { Spin, message } from "antd";
 import { loadStripe } from "@stripe/stripe-js";
+import BASE_URL from "../../utils/baseURL";
 
 const stripePublicKey = import.meta.env.VITE_API_STRIPE_PUBLIC_KEY;
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
-const user = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
+const user = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
 const CartTotals = () => {
   const [fastCargoCheched, setFastCargoCheched] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { cartItems } = useContext(CartContext);
-  const cartItemTotals = cartItems.map((item) => {
-    const itemTotal = item.price * item.quantity;
+  const cartItemTotals = JSON.parse(localStorage.getItem("furnitureItems")).map(
+    (item) => {
+      const itemTotal = item.price * item.quantity;
 
-    return itemTotal;
-  });
-
+      return itemTotal;
+    }
+  );
   const subTotals = cartItemTotals.reduce((previousValue, currentValue) => {
     return previousValue + currentValue;
   }, 0);
@@ -36,14 +35,14 @@ const CartTotals = () => {
     }
 
     const body = {
-      products: cartItems,
+      products: JSON.parse(localStorage.getItem("furnitureItems")),
       user: user,
       cargoFee: fastCargoCheched ? cargoFee : 0,
     };
     try {
       const stripe = await loadStripe(stripePublicKey);
 
-      const res = await fetch(`${apiUrl}/api/payment`, {
+      const res = await fetch(`${BASE_URL}/payment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

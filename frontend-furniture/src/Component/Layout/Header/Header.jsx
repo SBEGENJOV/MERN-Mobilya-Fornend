@@ -91,7 +91,7 @@ export default function Header() {
                   </a>
                 </div>
                 <div className="header-cart">
-                  <a href="cart.html" className="header-cart-link">
+                  <a href="/cart" className="header-cart-link">
                     <i className="bi bi-bag"></i>
                     <span className="header-cart-count">{cart.length}</span>
                   </a>
