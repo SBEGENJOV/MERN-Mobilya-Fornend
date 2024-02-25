@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./Info.css";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../Redux/Slices/cart/cartSlice";
 import { message } from "antd";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import { followProductAction } from "../../../Redux/Slices/users/usersSlices";
 const Info = ({ singleProduct }) => {
   const dispatch = useDispatch();
   const { productId } = useParams();
+  const { products } = useSelector((state) => state?.products);
 
   const filteredCard = JSON.parse(localStorage.getItem("furnitureItems")).find(
     (cartItem) => cartItem._id === singleProduct?.product?._id
@@ -47,24 +48,7 @@ const Info = ({ singleProduct }) => {
     <div className="product-info">
       <h1 className="product-title">{singleProduct?.product?.name}</h1>
       <div className="product-review">
-        <ul className="product-star">
-          <li>
-            <i className="bi bi-star-fill"></i>
-          </li>
-          <li>
-            <i className="bi bi-star-fill"></i>
-          </li>
-          <li>
-            <i className="bi bi-star-fill"></i>
-          </li>
-          <li>
-            <i className="bi bi-star-fill"></i>
-          </li>
-          <li>
-            <i className="bi bi-star-half"></i>
-          </li>
-        </ul>
-        <span>2 Yorum</span>
+        <span>{products?.product?.comments?.length} Yorum Bırakılmış</span>
       </div>
       <div className="product-price">
         <s className="old-price">${originalPrice.toFixed(2)}</s>

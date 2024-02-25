@@ -27,19 +27,26 @@ export const createCommentAction = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
+
+      const { productId, message, user } = payload.comments[1]; // payload'dan productId ve message değerlerini al
+
       const { data } = await axios.post(
-        `${BASE_URL}/comment/${payload?.productId}`,
+        `${BASE_URL}/comment`,
         {
-          message: payload?.message,
+          message: message,
+          author: user,
+          productId: productId,
         },
         config
       );
+      console.log(payload);
       return data;
     } catch (error) {
       return rejectWithValue(error?.response?.data);
     }
   }
 );
+
 //Tüm yorumları getirme
 export const commentViewAction = createAsyncThunk(
   "comment/fetch-public-comment",

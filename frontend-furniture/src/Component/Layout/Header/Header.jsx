@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Category from "../../Category/Category";
 import "./Header.css";
@@ -30,7 +31,7 @@ export default function Header() {
               <i className="bi bi-list" id="btn-menu"></i>
             </div>
             <div className="header-left">
-              <a href="index.html" className="logo">
+              <a href={"/"} className="logo">
                 SB MOBİLYA
               </a>
             </div>
@@ -73,7 +74,7 @@ export default function Header() {
                   <a href="cart.html" className="header-cart-link">
                     <i className="bi bi-heart"></i>
                     <span className="header-cart-count">
-                      {profile?.user?.productViewrs?.length}
+                      {profile?.user?.likedProduct?.length}
                     </span>
                   </a>
                 </div>

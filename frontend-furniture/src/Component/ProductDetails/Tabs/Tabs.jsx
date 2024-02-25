@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import Reviews from "../../Reviews/Reviews";
+import Reviews from "../../Reviews/Reviews";
 import "./Tabs.css";
 import PropTypes from "prop-types";
 
@@ -50,7 +50,9 @@ const Tabs = ({ singleProduct }) => {
         >
           <div
             className="product-description"
-            dangerouslySetInnerHTML={{ __html: singleProduct.description }}
+            dangerouslySetInnerHTML={{
+              __html: singleProduct?.product?.description,
+            }}
           ></div>
         </div>
         <div
@@ -83,11 +85,10 @@ const Tabs = ({ singleProduct }) => {
             </tbody>
           </table>
         </div>
-        {/* <Reviews
+        <Reviews
           active={activeTab === "reviews" ? "content active" : "content"}
           singleProduct={singleProduct}
-          setSingleProduct={setSingleProduct}
-        /> */}
+        />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import { getProductAction } from "../../Redux/Slices/product/productsSlice";
 import { productViewsCounttAction } from "../../Redux/Slices/users/usersSlices";
 
 const ProductDetails = () => {
+  
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state?.products);
