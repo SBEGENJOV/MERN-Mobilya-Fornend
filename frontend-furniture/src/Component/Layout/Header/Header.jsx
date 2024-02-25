@@ -11,9 +11,11 @@ export default function Header() {
   const dispatch = useDispatch();
   const { userAuth, profile } = useSelector((state) => state?.users);
   const userId = userAuth?.userInfo?._id;
-  if (userAuth?.userInfo !== null) {
-    dispatch(userPrivateProfileAction(userId));
-  }
+  useEffect(() => {
+    if (userAuth?.userInfo !== null) {
+      dispatch(userPrivateProfileAction(userId));
+    }
+  }, [dispatch, userAuth?.userInfo, userId]);
 
   const { cart } = useSelector((state) => state?.cart);
   return (
@@ -56,7 +58,7 @@ export default function Header() {
                     </a>
                   </li>
                   <li className="menu-list-item">
-                    <a href="contact.html" className="menu-link">
+                    <a href="/contact" className="menu-link">
                       İLETİŞİM
                     </a>
                   </li>

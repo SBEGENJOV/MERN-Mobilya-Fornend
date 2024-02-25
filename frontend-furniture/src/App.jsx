@@ -9,6 +9,7 @@ import UserPage from "./Component/Auth/UserPage";
 import BlogPage from "./Pages/BlogPage";
 import CampainPage from "./Pages/CampainPage";
 import ProductCategory from "./Component/Product/ProductCategory";
+import ContactPage from "./Pages/ContactPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/user" element={<UserPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/campain" element={<CampainPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route
           path="/productCategory/:name/:productTypeId"
           element={<ProductCategory />}

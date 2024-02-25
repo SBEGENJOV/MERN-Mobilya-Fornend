@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { addToCart } from "../../Redux/Slices/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
-const ProductCategoryItem = ({ productItem, deg }) => {
+const   ProductCategoryItem = ({ productItem, deg }) => {
   const dispatch = useDispatch();
 
   const deger = deg;
@@ -87,6 +87,5 @@ export default ProductCategoryItem;
 
 ProductCategoryItem.propTypes = {
   productItem: PropTypes.object,
-  setCartItems: PropTypes.func,
   deg: PropTypes.bool,
 };

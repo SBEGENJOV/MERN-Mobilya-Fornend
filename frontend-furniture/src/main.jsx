@@ -6,6 +6,7 @@ import "./index.css";
 import store from "./Redux/Store/store.js";
 import MainLayout from "./layout/MainLayout.jsx";
 import "slick-carousel/slick/slick.css";
+//import ScrollToTop from "./ScrollToTop";
 import "slick-carousel/slick/slick-theme.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

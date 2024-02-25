@@ -21,24 +21,7 @@ export const addContactAction = createAsyncThunk(
   "contact/create",
   async (payload, { rejectWithValue, getState, dispatch }) => {
     try {
-      //convert the payload to formdata
-      const formData = new FormData();
-      formData.append("name", payload?.name);
-      formData.append("mail", payload?.mail);
-      formData.append("subject", payload?.subject);
-      formData.append("content", payload?.content);
-
-      const token = getState().users?.userAuth?.userInfo?.token;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const { data } = await axios.post(
-        `${BASE_URL}/contact`,
-        formData,
-        config
-      );
+      const { data } = await axios.post(`${BASE_URL}/contact`, payload);
       return data;
     } catch (error) {
       return rejectWithValue(error?.response?.data);

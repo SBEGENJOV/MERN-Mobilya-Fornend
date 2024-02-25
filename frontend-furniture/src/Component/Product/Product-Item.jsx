@@ -1,5 +1,6 @@
 import "./Product-Item.css";
 import PropTypes from "prop-types";
+import { message } from "antd";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {
@@ -9,6 +10,19 @@ const ProductItem = ({ productItem }) => {
   // İndirimli fiyatı hesaplama
   const discountedPrice =
     originalPrice - (originalPrice * discountPercentage) / 100;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const currentURL = window.location.href;
+    navigator.clipboard
+      .writeText(`${currentURL}product/${productItem._id}`)
+      .then(() => {
+        message.success("Link başarıyla kopyalandı.");
+      })
+      .catch((error) => {
+        message.success("Link kopyalanırken hata oluştu.");
+      });
+  };
   return (
     <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
@@ -56,7 +70,7 @@ const ProductItem = ({ productItem }) => {
           <Link to={`/product/${productItem._id}`} className="product-link">
             <i className="bi bi-eye-fill"></i>
           </Link>
-          <a href="#">
+          <a onClick={handleClick}>
             <i className="bi bi-share-fill"></i>
           </a>
         </div>

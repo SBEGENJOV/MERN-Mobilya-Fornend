@@ -6,7 +6,7 @@ import ErrorMsg from "../Alert/ErrorMsg";
 import SuccesMsg from "../Alert/SuccesMsg";
 
 const Register = () => {
-  const { user, error, loading } = useSelector((state) => state?.users);
+  const { user, error } = useSelector((state) => state?.users);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",

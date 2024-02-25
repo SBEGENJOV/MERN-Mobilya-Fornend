@@ -33,7 +33,7 @@ const Info = ({ singleProduct }) => {
       .then(() => {
         message.success("Link başarıyla kopyalandı.");
       })
-      .catch((error) => {
+      .catch(() => {
         message.success("Link kopyalanırken hata oluştu.");
       });
   };
