@@ -46,7 +46,7 @@ export const addProductTypeAction = createAsyncThunk(
 );
 //Tüm türleri getirme
 export const productTypeViewAction = createAsyncThunk(
-  "coupon/fetch-public-coupons",
+  "productType/fetch-public-productTypes",
   async (payload, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {

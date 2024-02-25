@@ -11,7 +11,6 @@ import { getProductAction } from "../../Redux/Slices/product/productsSlice";
 import { productViewsCounttAction } from "../../Redux/Slices/users/usersSlices";
 
 const ProductDetails = () => {
-  
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state?.products);
@@ -21,7 +20,7 @@ const ProductDetails = () => {
   }, [dispatch, productId]);
   useEffect(() => {
     dispatch(productViewsCounttAction(productId));
-  }, []);
+  }, [dispatch, productId]);
 
   return (
     <section className="single-product">
@@ -31,11 +30,11 @@ const ProductDetails = () => {
           <div className="single-content">
             <main className="site-main">
               <Gallery singleProduct={products} />
-               <Info singleProduct={products} />
+              <Info singleProduct={products} />
             </main>
           </div>
           {/* <Tabs singleProduct={products} setSingleProduct={products} />  */}
-          <Tabs singleProduct={products} /> 
+          <Tabs singleProduct={products} />
         </div>
       </div>
     </section>

@@ -37,18 +37,25 @@ export default function Category() {
                           key={productTypes._id}
                           className="megamenu-products"
                         >
-                          <div style={{ textAlign: "center" }}>
-                            {productTypes?.name}
-                          </div>
-                          <br />
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
+                          <a
+                            href={`/productCategory/${productTypes.name}/${productTypes._id}`}
                           >
-                            <img src={productTypes?.img} alt="Product Image" />
-                          </div>
+                            <div style={{ textAlign: "center" }}>
+                              {productTypes?.name}
+                            </div>
+                            <br />
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <img
+                                src={productTypes?.img}
+                                alt="Product Image"
+                              />
+                            </div>
+                          </a>
                         </div>
                       ))}
                     </div>

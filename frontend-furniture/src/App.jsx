@@ -8,6 +8,7 @@ import AuthPage from "./Pages/AuthPage";
 import UserPage from "./Component/Auth/UserPage";
 import BlogPage from "./Pages/BlogPage";
 import CampainPage from "./Pages/CampainPage";
+import ProductCategory from "./Component/Product/ProductCategory";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route path="/user" element={<UserPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/campain" element={<CampainPage />} />
+        <Route
+          path="/productCategory/:name/:productTypeId"
+          element={<ProductCategory />}
+        />
       </Routes>
     </BrowserRouter>
   );
