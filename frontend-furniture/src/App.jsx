@@ -6,6 +6,9 @@ import CampainDetailsPage from "./Pages/CampainDetailsPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage ";
 import AuthPage from "./Pages/AuthPage";
 import UserPage from "./Component/Auth/UserPage";
+import BlogPage from "./Pages/BlogPage";
+import CampainPage from "./Pages/CampainPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +19,8 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/user" element={<UserPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/campain" element={<CampainPage />} />
       </Routes>
     </BrowserRouter>
   );

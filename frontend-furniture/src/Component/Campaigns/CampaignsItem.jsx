@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./CampaignsItem.css";
 import PropTypes from "prop-types";
 

@@ -46,12 +46,12 @@ export default function Header() {
                     </a>
                   </li>
                   <li className="menu-list-item megamenu-wrapper">
-                    <a href="shop.html" className="menu-link">
+                    <a href="/campain" className="menu-link">
                       KAMPANYALAR
                     </a>
                   </li>
                   <li className="menu-list-item">
-                    <a href="blog.html" className="menu-link">
+                    <a href="/blog" className="menu-link">
                       YAZILAR
                     </a>
                   </li>

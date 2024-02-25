@@ -1,14 +1,13 @@
+import { Button, message } from "antd";
 import "./userPage.css";
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const UserPage = () => {
   const { profile } = useSelector((state) => state?.users);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const kayitDate = new Date(profile?.user?.createdAt).toLocaleDateString(
-    "tr-TR",
-    options
-  );
-  const sonGiris = new Date(profile?.user?.lastLogin).toLocaleDateString(
     "tr-TR",
     options
   );
@@ -65,6 +64,18 @@ const UserPage = () => {
               name="phone"
               id="phone"
             />
+          </div>
+          <div className="input-group">
+            <Button
+              onClick={() => (
+                localStorage.removeItem("userInfo"),
+                (window.location.href = "/"),
+                window.alert("Başarı ile çıkış yapıldı")
+              )}
+              style={{ width: "100%" }}
+            >
+              Çıkış Yap
+            </Button>
           </div>
         </form>
       </div>

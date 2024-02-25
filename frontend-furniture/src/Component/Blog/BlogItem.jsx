@@ -20,6 +20,9 @@ const BlogItem = ({ blog }) => {
         <div className="blog-info-center">
           <a href="#">{blog.title}</a>
         </div>
+        <div className="blog-info-top">
+          <a href="#">Yazar: {blog.writer}</a>
+        </div>
         <div className="blog-info-bottom">
           <Link to={`/blog/${blog._id}`}>Devamı İçin Tıkla</Link>
         </div>
