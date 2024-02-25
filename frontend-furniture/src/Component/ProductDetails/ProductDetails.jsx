@@ -22,6 +22,8 @@ const ProductDetails = () => {
     dispatch(productViewsCounttAction(productId));
   }, [dispatch, productId]);
 
+  
+
   return (
     <section className="single-product">
       <div className="container">

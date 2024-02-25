@@ -30,7 +30,7 @@ export const addToCart = createAsyncThunk(
       const updatedCart = [...getState().cart.cart, cartItem];
 
       // localStorage'a sepet verisini kaydetme
-      localStorage.setItem("furnitureItems", JSON.stringify(updatedCart));
+      localStorage.setItem("furnitureItems", [JSON.stringify(updatedCart)]);
 
       return updatedCart;
     } catch (error) {

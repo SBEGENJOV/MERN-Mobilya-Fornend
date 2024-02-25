@@ -1,11 +1,17 @@
 import "./Product-Item.css";
 import PropTypes from "prop-types";
 import { message } from "antd";
-import { Link } from "react-router-dom";
+import { addToCart } from "../../Redux/Slices/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductItem = ({ productItem }) => {
   const originalPrice = productItem?.price?.current;
   const discountPercentage = productItem?.price?.discount;
+  const dispatch = useDispatch();
+
+  const filteredCard = [JSON.parse(localStorage.getItem("furnitureItems"))].find(
+    (cartItem) => cartItem._id === productItem._id
+  );
 
   // İndirimli fiyatı hesaplama
   const discountedPrice =
@@ -60,16 +66,28 @@ const ProductItem = ({ productItem }) => {
           -{productItem?.price?.discount}%
         </span>
         <div className="product-links">
-          <button className="add-to-cart">
+          <button
+            disabled={filteredCard}
+            onClick={() =>
+              dispatch(
+                addToCart({
+                  ...productItem,
+                  price: discountedPrice,
+                  quantity: 1,
+                })
+              )
+            }
+            className="add-to-cart"
+          >
             <i className="bi bi-basket-fill"></i>
           </button>
           <button>
             <i className="bi bi-heart-fill"></i>
           </button>
 
-          <Link to={`/product/${productItem._id}`} className="product-link">
+          <a href={`/product/${productItem._id}`} className="product-link">
             <i className="bi bi-eye-fill"></i>
-          </Link>
+          </a>
           <a onClick={handleClick}>
             <i className="bi bi-share-fill"></i>
           </a>
