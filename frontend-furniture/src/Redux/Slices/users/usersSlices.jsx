@@ -16,8 +16,6 @@ const INITIAL_STATE = {
   isLogin: false,
   emailMessage: undefined,
   profile: [],
-  isLiked: [],
-  isViewed: [],
   isEmailSent: false,
   userAuth: {
     error: null,

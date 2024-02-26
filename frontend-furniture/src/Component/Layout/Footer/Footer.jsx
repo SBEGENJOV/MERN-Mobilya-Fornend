@@ -8,7 +8,6 @@ export default function Footer() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state?.category);
   //dispatch
-  console.log(categories);
   useEffect(() => {
     dispatch(categoryViewAction());
   }, [dispatch]);
