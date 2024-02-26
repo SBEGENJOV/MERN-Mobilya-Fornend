@@ -14,23 +14,26 @@ const Dialog = ({ isDialogShow, setIsDialogShow }) => {
           <i className="bi bi-x"></i>
         </button>
         <div className="modal-image">
-          <img src="/img/modal-dialog.jpg" alt="" />
+          <img
+            style={{ width: "90%", height: "40%" }}
+            src="https://images.pexels.com/photos/6580227/pexels-photo-6580227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
         </div>
         <div className="popup-wrapper">
           <div className="popup-content">
             <div className="popup-title">
-              <h3>NEWSLETTER</h3>
+              <h3>Bülten</h3>
             </div>
             <p className="popup-text">
-              Sign up to our newsletter and get exclusive deals you won find any
-              where else straight to your inbox!
+              En Trend Mobilyalar sadece
+              <br />
+              SB BUTIK de
             </p>
             <form className="popup-form">
-              <input type="text" placeholder="Enter Email Address Here" />
-              <button className="btn btn-primary">SUBSCRIBE</button>
+              <span>Bu açılır pencereyi tekrar göstermeyin</span>
               <label>
                 <input type="checkbox" onChange={handleCloseDialog} />
-                <span>Don`t show this popup again</span>
               </label>
             </form>
           </div>
