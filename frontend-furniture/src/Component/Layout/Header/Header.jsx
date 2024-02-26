@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { userPrivateProfileAction } from "../../../Redux/Slices/users/usersSlices";
 
-export default function Header() {
+export default function Header({ setIsSearchShow }) {
   const user = localStorage.getItem("userInfo");
   const dispatch = useDispatch();
   const { userAuth, profile } = useSelector((state) => state?.users);
@@ -76,7 +76,10 @@ export default function Header() {
                     <i className="bi bi-person"></i>
                   </a>
                 )}
-                <button className="search-button">
+                <button
+                  className="search-button"
+                  onClick={() => setIsSearchShow(true)}
+                >
                   <i className="bi bi-search"></i>
                 </button>
                 <div className="header-cart">
